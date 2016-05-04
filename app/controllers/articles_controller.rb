@@ -21,8 +21,8 @@ class ArticlesController < ApplicationController
 		else
 			render 'new'
 		end	
-		
 	end
+	
 	def update
 		if @article.update(article_params)
 			flash[:notice] = "Article updated"
