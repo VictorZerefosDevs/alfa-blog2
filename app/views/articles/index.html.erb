@@ -1,23 +1,35 @@
-<h1>All articles</h1>
+<h1 class="text-center">Listing all articles</h1>
 
-<table class="table table-condensed" >
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-	<% @articles.each do |article| %>
-		<tr>
-			<td><%= article.title %></td>
-			<td><%= article.description %></td>
-			<td><%= link_to 'edit', edit_article_path(article), class: "btn btn-warning btn-sm " %></td>
-			<td><%= link_to 'show', article, class: "btn btn-info btn-sm" %></td>
-			<td><%= link_to 'delete', article, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %></td>
-		
-		</tr>
-	</tbody>
-	<% end %>
-</table>
-<%= link_to 'new article', new_article_path, class: "btn btn-default btn-sm"%>
+	
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+		<% @articles.each do |article| %>
+			<div class="panel panel-primary ">
+				<div class="panel-heading">
+					<h3 class="panel-title">Title: <%= article.title %></h3>
+				</div>
+				<div class="panel-body">
+    			<%= article.description %>
+    			<div class="article-details">
+	    				<small><i class="fa fa-user" aria-hidden="true"></i>  
+	    						<%= article.user.username if article.user %> 
+	    						<i class="fa fa-clock-o" aria-hidden="true"></i> 
+	    						<%= time_ago_in_words(article.created_at) %> ago, 
+	    				</small> 
+    			</div>
+  			</div>
+  			<div class="panel-footer">
+  				<%= link_to 'edit', edit_article_path(article), class: "btn btn-warning btn-xs " %>
+					<%= link_to 'show', article, class: "btn btn-info btn-xs" %>
+					<%= link_to 'delete', article, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs" %>
+  			</div>
+					
+			</div>
+			<% end %>
+			<%= link_to 'new article', new_article_path, class: "btn btn-default btn-sm"%>
+		</div>
+	</div>
+			
+	
+
+

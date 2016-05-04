@@ -1,13 +1,27 @@
 $btn-default-bg: rgba(44, 62, 80,1.0);
 $btn-default-color: rgba(236, 240, 241,1.0);
 $btn-info-bg:    rgba(22, 160, 133,1.0);
+$panel-primary-heading-bg: rgba(44, 62, 80,1.0);
+$panel-primary-border: rgba(189, 195, 199,1.0);
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+body {
+	margin-top: 90px;
+}
 
-
+.article-details {
+	border-top: 1px solid rgba(189, 195, 199,0.5);
+	margin-top: 15px;
+}
+#margin-bottom {
+	margin-bottom: 90px;
+}
+.well {
+	margin-bottom: 268px;
+}
 .btn-info, .btn-danger, .btn-default, .btn-warning {
 	border-radius: 50px;
 }
