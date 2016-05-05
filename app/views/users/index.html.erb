@@ -1,0 +1,23 @@
+<h1 align="center" >Users Listing</h1>
+
+<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+		<% @users.each do |user| %>
+			<div class="panel panel-primary ">
+				<div class="panel-heading">
+					<h3 class="panel-title">Username: <%= link_to user.username, user_path(user)%></h3>
+				</div>
+				<div class="panel-body">
+    			<%= pluralize(user.articles.count, "article") if user.articles %>
+  			</div>
+  			<div class="panel-footer">
+  				<%= link_to 'edit', edit_user_path(user), class: "btn btn-warning btn-xs " %>
+					<%= link_to 'show', user, class: "btn btn-info btn-xs" %>
+					<%= link_to 'delete User', user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs" %>
+  			</div>
+					
+			</div>
+			<% end %>
+			<%= link_to 'new user', signup_path, class: "btn btn-default btn-sm"%>
+		</div>
+	</div>

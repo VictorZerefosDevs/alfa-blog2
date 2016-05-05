@@ -1,12 +1,31 @@
-<h2 align="center">Title: <%= @user.username %></h2>
-<div class="well col-xs-8 col-xs-offset-2">
-	<h4 class="center" ><strong>email:</strong></h4>
-	<hr>
-	 <%= simple_format(@article.description) %><br>
-	 <hr>
-	 <%= link_to 'back', articles_path , class: "btn btn-default btn-sm"%> 
-	<%= link_to 'Edit this article', edit_article_path , class: "btn btn-default btn-sm"%> 
-	<%= link_to 'new article', new_article_path, class: "btn btn-default btn-sm" %> 
+<h2 align="center">Welcome <%= @user.username %></h2>
+
+<div class="row">
+		<div align="center" class="col-xs-4 col-xs-offset-4">
+			 <%= gravatar_for @user%>
+				<h4 align="center" ><%= @user.username %>' articles</h4>
+		</div>
 </div>
 
- 
+<div class="col-xs-8 col-xs-offset-2">
+			 <% @user.articles.each do |ua|  %>
+					<div class="panel panel-primary ">
+
+							<div class="panel-heading">
+								<h3 class="panel-title">Title: <%= ua.title %></h3>
+								<small>Created: <%= time_ago_in_words(ua.created_at) %> ago.</small>
+							</div>
+
+							<div class="panel-body">
+			    			<%= ua.description %><br>
+			    	
+			  			</div>	
+
+			  			<div class="panel-footer">
+			  				<%= link_to 'edit', edit_article_path(ua), class: "btn btn-warning btn-xs " %>
+								<%= link_to 'delete Article', article_path(ua), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs" %>
+	  					</div>
+
+					</div>
+			<% end %>		
+</div>
