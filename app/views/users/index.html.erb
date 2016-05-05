@@ -1,5 +1,7 @@
 <h1 align="center" >Users Listing</h1>
 
+	<%= will_paginate %>
+
 <div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 		<% @users.each do |user| %>
@@ -20,4 +22,5 @@
 			<% end %>
 			<%= link_to 'new user', signup_path, class: "btn btn-default btn-sm"%>
 		</div>
+		<%= will_paginate %>
 	</div>
